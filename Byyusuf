@@ -1,0 +1,140 @@
+-- [[ SYNIOX MEGA PROJECT - V2 ]] --
+-- Bu kod, ana key sistemin ve ardından gelen Loader'ı kapsar.
+
+local _0xK = "Syniox-X-Yusuf" -- Mevcut Keyin
+
+local _0xCG = game:GetService("CoreGui")
+local _0xSG = Instance.new("ScreenGui", _0xCG)
+_0xSG.Name = "SynioxProjectV2"
+
+-- ==========================================
+-- 1. BÖLÜM: KEY SİSTEMİ (SYNIOX)
+-- ==========================================
+local _0xMF = Instance.new("Frame", _0xSG)
+_0xMF.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+_0xMF.Position = UDim2.new(0.5, -200, 0.5, -100)
+_0xMF.Size = UDim2.new(0, 400, 0, 200)
+_0xMF.Active = true
+_0xMF.Draggable = true
+Instance.new("UICorner", _0xMF).CornerRadius = UDim.new(0, 10)
+
+local _0xST = Instance.new("UIStroke", _0xMF)
+_0xST.Color = Color3.fromRGB(150, 0, 0) 
+_0xST.Thickness = 2
+
+local _0xTL = Instance.new("TextLabel", _0xMF)
+_0xTL.Text = "SYNIOX PUBLIC"
+_0xTL.Size = UDim2.new(1, 0, 0, 45)
+_0xTL.TextColor3 = Color3.fromRGB(150, 0, 0)
+_0xTL.BackgroundTransparency = 1
+_0xTL.Font = Enum.Font.GothamBold
+_0xTL.TextSize = 22
+_0xTL.Parent = _0xMF
+
+local _0xKI = Instance.new("TextBox", _0xMF)
+_0xKI.PlaceholderText = "ENTER KEY..."
+_0xKI.Position = UDim2.new(0.1, 0, 0.3, 0)
+_0xKI.Size = UDim2.new(0.8, 0, 0, 40)
+_0xKI.BackgroundColor3 = Color3.fromRGB(15, 15, 15)
+_0xKI.TextColor3 = Color3.fromRGB(255, 255, 255)
+_0xKI.Font = Enum.Font.GothamMedium
+_0xKI.TextSize = 16
+_0xKI.Parent = _0xMF
+Instance.new("UICorner", _0xKI)
+
+local _0xSB = Instance.new("TextButton", _0xMF)
+_0xSB.Text = "SUBMIT KEY"
+_0xSB.Position = UDim2.new(0.1, 0, 0.53, 0)
+_0xSB.Size = UDim2.new(0.8, 0, 0, 40)
+_0xSB.BackgroundColor3 = Color3.fromRGB(150, 0, 0)
+_0xSB.TextColor3 = Color3.fromRGB(255, 255, 255)
+_0xSB.Font = Enum.Font.GothamBold
+_0xSB.Parent = _0xMF
+Instance.new("UICorner", _0xSB)
+
+local _0xGK = Instance.new("TextButton", _0xMF)
+_0xGK.Text = "GET KEY"
+_0xGK.Position = UDim2.new(0.1, 0, 0.76, 0)
+_0xGK.Size = UDim2.new(0.8, 0, 0, 35)
+_0xGK.BackgroundColor3 = Color3.fromRGB(150, 0, 0)
+_0xGK.TextColor3 = Color3.fromRGB(255, 255, 255)
+_0xGK.Font = Enum.Font.GothamBold
+_0xGK.Parent = _0xMF
+Instance.new("UICorner", _0xGK)
+
+-- ==========================================
+-- 2. BÖLÜM: SYNIOX LOADER (KIRMIZI/SİYAH)
+-- ==========================================
+local LoaderFrame = Instance.new("Frame", _0xSG)
+LoaderFrame.Size = UDim2.new(0, 350, 0, 260)
+LoaderFrame.Position = UDim2.new(0.5, -175, 0.5, -130)
+LoaderFrame.BackgroundColor3 = Color3.fromRGB(0, 0, 0) 
+LoaderFrame.Visible = false
+LoaderFrame.Active = true
+LoaderFrame.Draggable = true
+Instance.new("UICorner", LoaderFrame).CornerRadius = UDim.new(0, 12)
+
+local LoaderStroke = Instance.new("UIStroke", LoaderFrame)
+LoaderStroke.Color = Color3.fromRGB(150, 0, 0)
+LoaderStroke.Thickness = 2
+
+local LoaderTitle = Instance.new("TextLabel", LoaderFrame)
+LoaderTitle.Text = "SYNIOX LOADER || V2"
+LoaderTitle.Size = UDim2.new(1, 0, 0, 50)
+LoaderTitle.TextColor3 = Color3.fromRGB(150, 0, 0)
+LoaderTitle.BackgroundTransparency = 1
+LoaderTitle.Font = Enum.Font.GothamBold
+LoaderTitle.TextSize = 20
+LoaderTitle.Parent = LoaderFrame
+
+local function CreateSynioxBtn(name, pos, scriptURL)
+    local btn = Instance.new("TextButton", LoaderFrame)
+    btn.Text = name
+    btn.Size = UDim2.new(0.8, 0, 0, 45)
+    btn.Position = pos
+    btn.BackgroundColor3 = Color3.fromRGB(150, 0, 0)
+    btn.TextColor3 = Color3.fromRGB(255, 255, 255)
+    btn.Font = Enum.Font.GothamBold
+    btn.TextSize = 14
+    Instance.new("UICorner", btn)
+    
+    btn.MouseButton1Click:Connect(function()
+        btn.Text = "EXECUTING..."
+        task.wait(0.5)
+        _0xSG:Destroy()
+        -- Buraya tıklandığında hangi scriptin yükleneceğini belirler
+        pcall(function() loadstring(game:HttpGet(scriptURL))() end)
+    end)
+end
+
+-- Linkleri kendine göre buraya ekleyebilirsin
+CreateSynioxBtn("Syniox Farming", UDim2.new(0.1, 0, 0.23, 0), "https://raw.githubusercontent.com/SynioxStudios/SynioxPublic-SH-SynioxHub-ByYusuf-BestSC/refs/heads/main/Key.txt")
+CreateSynioxBtn("Syniox Main Hub", UDim2.new(0.1, 0, 0.46, 0), "https://raw.githubusercontent.com/Link_Buraya_2")
+CreateSynioxBtn("Syniox PvP Mode", UDim2.new(0.1, 0, 0.69, 0), "https://raw.githubusercontent.com/Link_Buraya_3")
+
+-- ==========================================
+-- 3. BÖLÜM: ETKİLEŞİM MANTIĞI
+-- ==========================================
+_0xSB.MouseButton1Click:Connect(function()
+    if _0xKI.Text == _0xK then
+        _0xSB.Text = "ACCESS GRANTED!"
+        _0xSB.BackgroundColor3 = Color3.fromRGB(0, 150, 0)
+        task.wait(0.5)
+        _0xMF.Visible = false
+        LoaderFrame.Visible = true
+    else
+        _0xSB.Text = "WRONG KEY!"
+        _0xSB.BackgroundColor3 = Color3.fromRGB(200, 0, 0)
+        task.wait(1)
+        _0xSB.Text = "SUBMIT KEY"
+        _0xSB.BackgroundColor3 = Color3.fromRGB(150, 0, 0)
+    end
+end)
+
+_0xGK.MouseButton1Click:Connect(function()
+    setclipboard("https://discord.gg/DbAU5Z6HPd")
+    _0xGK.Text = "COPIED DISCORD!"
+    task.wait(1.5)
+    _0xGK.Text = "GET KEY"
+end)
+
