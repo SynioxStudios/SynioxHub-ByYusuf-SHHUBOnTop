@@ -1,4 +1,4 @@
--- [[ SYNIOX MEGA PROJECT - V2 (ANIMATED) ]] --
+-- [[ SYNIOX MEGA PROJECT - V2 (SHRINK ANIMATION) ]] --
 local _0xK = "Syniox-X-Yusuf" 
 local TweenService = game:GetService("TweenService")
 
@@ -11,7 +11,7 @@ _0xSG.Name = "SynioxProjectV2"
 -- ==========================================
 local _0xMF = Instance.new("Frame", _0xSG)
 _0xMF.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-_0xMF.Position = UDim2.new(0.5, -200, 0.5, -100) -- Merkezde başlar
+_0xMF.Position = UDim2.new(0.5, -200, 0.5, -100)
 _0xMF.Size = UDim2.new(0, 400, 0, 200)
 _0xMF.Active = true
 _0xMF.Draggable = true
@@ -30,6 +30,7 @@ _0xTL.Font = Enum.Font.GothamBold
 _0xTL.TextSize = 22
 _0xTL.Parent = _0xMF
 
+-- ... (TextBox ve Diğer Butonlar Aynı Kalıyor) ...
 local _0xKI = Instance.new("TextBox", _0xMF)
 _0xKI.PlaceholderText = "ENTER KEY..."
 _0xKI.Position = UDim2.new(0.1, 0, 0.3, 0)
@@ -37,7 +38,6 @@ _0xKI.Size = UDim2.new(0.8, 0, 0, 40)
 _0xKI.BackgroundColor3 = Color3.fromRGB(15, 15, 15)
 _0xKI.TextColor3 = Color3.fromRGB(255, 255, 255)
 _0xKI.Font = Enum.Font.GothamMedium
-_0xKI.TextSize = 16
 _0xKI.Parent = _0xMF
 Instance.new("UICorner", _0xKI)
 
@@ -62,16 +62,16 @@ _0xGK.Parent = _0xMF
 Instance.new("UICorner", _0xGK)
 
 -- ==========================================
--- 2. BÖLÜM: SYNIOX LOADER (KIRMIZI/SİYAH)
+-- 2. BÖLÜM: SYNIOX LOADER (ANİMASYONLU)
 -- ==========================================
 local LoaderFrame = Instance.new("Frame", _0xSG)
 LoaderFrame.Size = UDim2.new(0, 350, 0, 260)
--- ŞEKİLLİ GİRİŞ İÇİN: Başlangıçta ekranın yukarısında gizli
 LoaderFrame.Position = UDim2.new(0.5, -175, -0.6, 0) 
 LoaderFrame.BackgroundColor3 = Color3.fromRGB(0, 0, 0) 
 LoaderFrame.Visible = false
 LoaderFrame.Active = true
 LoaderFrame.Draggable = true
+LoaderFrame.ClipsDescendants = true -- Küçülürken içindekiler taşmasın
 Instance.new("UICorner", LoaderFrame).CornerRadius = UDim.new(0, 12)
 
 local LoaderStroke = Instance.new("UIStroke", LoaderFrame)
@@ -100,19 +100,28 @@ local function CreateSynioxBtn(name, pos, scriptURL)
     
     btn.MouseButton1Click:Connect(function()
         btn.Text = "EXECUTING..."
-        task.wait(0.5)
-        _0xSG:Destroy()
-        pcall(function() loadstring(game:HttpGet(scriptURL))() end)
+        
+        -- KÜÇÜLME ANİMASYONU (Shrink)
+        local shrinkTween = TweenService:Create(LoaderFrame, TweenInfo.new(0.5, Enum.EasingStyle.Back, Enum.EasingDirection.In), {
+            Size = UDim2.new(0, 0, 0, 0),
+            Position = UDim2.new(0.5, 0, 0.5, 0) -- Merkeze doğru küçülür
+        })
+        shrinkTween:Play()
+        
+        shrinkTween.Completed:Connect(function()
+            _0xSG:Destroy()
+            pcall(function() loadstring(game:HttpGet(scriptURL))() end)
+        end)
     end)
 end
 
--- Senin verdiğin linki buraya sabitledim
-CreateSynioxBtn("Syniox V1", UDim2.new(0.1, 0, 0.23, 0), "https://raw.githubusercontent.com/SynioxStudios/SynioxPublic-SH-SynioxHub-ByYusuf-BestSC/refs/heads/main/Key.txt")
+-- Linklerin
+CreateSynioxBtn("Syniox Farming", UDim2.new(0.1, 0, 0.23, 0), "https://raw.githubusercontent.com/SynioxStudios/SynioxPublic-SH-SynioxHub-ByYusuf-BestSC/refs/heads/main/Key.txt")
 CreateSynioxBtn("Syniox Main Hub", UDim2.new(0.1, 0, 0.46, 0), "https://raw.githubusercontent.com/Link_Buraya_2")
-CreateSynioxBtn("Syniox Deneme", UDim2.new(0.1, 0, 0.69, 0), "https://raw.githubusercontent.com/Link_Buraya_3")
+CreateSynioxBtn("Syniox PvP Mode", UDim2.new(0.1, 0, 0.69, 0), "https://raw.githubusercontent.com/Link_Buraya_3")
 
 -- ==========================================
--- 3. BÖLÜM: ŞEKİLLİ GEÇİŞ MANTIĞI
+-- 3. BÖLÜM: GEÇİŞLER
 -- ==========================================
 _0xSB.MouseButton1Click:Connect(function()
     if _0xKI.Text == _0xK then
@@ -120,15 +129,12 @@ _0xSB.MouseButton1Click:Connect(function()
         _0xSB.BackgroundColor3 = Color3.fromRGB(0, 150, 0)
         task.wait(0.5)
         
-        -- ANA PANELİ AŞAĞI KAYDIRARAK YOK ET
         local panelExit = TweenService:Create(_0xMF, TweenInfo.new(0.6, Enum.EasingStyle.Quart, Enum.EasingDirection.In), {Position = UDim2.new(0.5, -200, 1.2, 0)})
         panelExit:Play()
         
         panelExit.Completed:Connect(function()
             _0xMF.Visible = false
             LoaderFrame.Visible = true
-            
-            -- LOADER PANELİNİ YUKARIDAN SÜZEREK GETİR
             local loaderEntry = TweenService:Create(LoaderFrame, TweenInfo.new(0.8, Enum.EasingStyle.Back, Enum.EasingDirection.Out), {Position = UDim2.new(0.5, -175, 0.5, -130)})
             loaderEntry:Play()
         end)
@@ -142,7 +148,6 @@ _0xSB.MouseButton1Click:Connect(function()
 end)
 
 _0xGK.MouseButton1Click:Connect(function()
-    -- Discord linkini de güncelledim
     setclipboard("https://discord.gg/DbAU5Z6HPd")
     _0xGK.Text = "COPIED DISCORD!"
     task.wait(1.5)
