@@ -1,7 +1,6 @@
--- [[ SYNIOX MEGA PROJECT - V2 ]] --
--- Bu kod, ana key sistemin ve ardından gelen Loader'ı kapsar.
-
-local _0xK = "Syniox-X-Yusuf" -- Mevcut Keyin
+-- [[ SYNIOX MEGA PROJECT - V2 (ANIMATED) ]] --
+local _0xK = "Syniox-X-Yusuf" 
+local TweenService = game:GetService("TweenService")
 
 local _0xCG = game:GetService("CoreGui")
 local _0xSG = Instance.new("ScreenGui", _0xCG)
@@ -12,7 +11,7 @@ _0xSG.Name = "SynioxProjectV2"
 -- ==========================================
 local _0xMF = Instance.new("Frame", _0xSG)
 _0xMF.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-_0xMF.Position = UDim2.new(0.5, -200, 0.5, -100)
+_0xMF.Position = UDim2.new(0.5, -200, 0.5, -100) -- Merkezde başlar
 _0xMF.Size = UDim2.new(0, 400, 0, 200)
 _0xMF.Active = true
 _0xMF.Draggable = true
@@ -67,7 +66,8 @@ Instance.new("UICorner", _0xGK)
 -- ==========================================
 local LoaderFrame = Instance.new("Frame", _0xSG)
 LoaderFrame.Size = UDim2.new(0, 350, 0, 260)
-LoaderFrame.Position = UDim2.new(0.5, -175, 0.5, -130)
+-- ŞEKİLLİ GİRİŞ İÇİN: Başlangıçta ekranın yukarısında gizli
+LoaderFrame.Position = UDim2.new(0.5, -175, -0.6, 0) 
 LoaderFrame.BackgroundColor3 = Color3.fromRGB(0, 0, 0) 
 LoaderFrame.Visible = false
 LoaderFrame.Active = true
@@ -102,26 +102,36 @@ local function CreateSynioxBtn(name, pos, scriptURL)
         btn.Text = "EXECUTING..."
         task.wait(0.5)
         _0xSG:Destroy()
-        -- Buraya tıklandığında hangi scriptin yükleneceğini belirler
         pcall(function() loadstring(game:HttpGet(scriptURL))() end)
     end)
 end
 
--- Linkleri kendine göre buraya ekleyebilirsin
-CreateSynioxBtn("Syniox Farming", UDim2.new(0.1, 0, 0.23, 0), "https://raw.githubusercontent.com/SynioxStudios/SynioxPublic-SH-SynioxHub-ByYusuf-BestSC/refs/heads/main/Key.txt")
+-- Senin verdiğin linki buraya sabitledim
+CreateSynioxBtn("Syniox V1", UDim2.new(0.1, 0, 0.23, 0), "https://raw.githubusercontent.com/SynioxStudios/SynioxPublic-SH-SynioxHub-ByYusuf-BestSC/refs/heads/main/Key.txt")
 CreateSynioxBtn("Syniox Main Hub", UDim2.new(0.1, 0, 0.46, 0), "https://raw.githubusercontent.com/Link_Buraya_2")
-CreateSynioxBtn("Syniox PvP Mode", UDim2.new(0.1, 0, 0.69, 0), "https://raw.githubusercontent.com/Link_Buraya_3")
+CreateSynioxBtn("Syniox Deneme", UDim2.new(0.1, 0, 0.69, 0), "https://raw.githubusercontent.com/Link_Buraya_3")
 
 -- ==========================================
--- 3. BÖLÜM: ETKİLEŞİM MANTIĞI
+-- 3. BÖLÜM: ŞEKİLLİ GEÇİŞ MANTIĞI
 -- ==========================================
 _0xSB.MouseButton1Click:Connect(function()
     if _0xKI.Text == _0xK then
         _0xSB.Text = "ACCESS GRANTED!"
         _0xSB.BackgroundColor3 = Color3.fromRGB(0, 150, 0)
         task.wait(0.5)
-        _0xMF.Visible = false
-        LoaderFrame.Visible = true
+        
+        -- ANA PANELİ AŞAĞI KAYDIRARAK YOK ET
+        local panelExit = TweenService:Create(_0xMF, TweenInfo.new(0.6, Enum.EasingStyle.Quart, Enum.EasingDirection.In), {Position = UDim2.new(0.5, -200, 1.2, 0)})
+        panelExit:Play()
+        
+        panelExit.Completed:Connect(function()
+            _0xMF.Visible = false
+            LoaderFrame.Visible = true
+            
+            -- LOADER PANELİNİ YUKARIDAN SÜZEREK GETİR
+            local loaderEntry = TweenService:Create(LoaderFrame, TweenInfo.new(0.8, Enum.EasingStyle.Back, Enum.EasingDirection.Out), {Position = UDim2.new(0.5, -175, 0.5, -130)})
+            loaderEntry:Play()
+        end)
     else
         _0xSB.Text = "WRONG KEY!"
         _0xSB.BackgroundColor3 = Color3.fromRGB(200, 0, 0)
@@ -132,9 +142,9 @@ _0xSB.MouseButton1Click:Connect(function()
 end)
 
 _0xGK.MouseButton1Click:Connect(function()
+    -- Discord linkini de güncelledim
     setclipboard("https://discord.gg/DbAU5Z6HPd")
     _0xGK.Text = "COPIED DISCORD!"
     task.wait(1.5)
     _0xGK.Text = "GET KEY"
 end)
-
