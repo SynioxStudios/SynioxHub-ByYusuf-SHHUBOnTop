@@ -1,4 +1,4 @@
--- [[ SYNIOX MEGA PROJECT - V2 (ULTRA GRADIENT FIX) ]] --
+-- [[ SYNIOX MEGA PROJECT - V2 (DEEP GRADIENT EDITION) ]] --
 local _0xK = "Syniox-X-Yusuf" 
 local TweenService = game:GetService("TweenService")
 
@@ -6,19 +6,19 @@ local _0xCG = game:GetService("CoreGui")
 local _0xSG = Instance.new("ScreenGui", _0xCG)
 _0xSG.Name = "SynioxProjectV2"
 
--- Siyahı Daha Yukarı Taşıyan Kırmızı -> Siyah Geçişi
-local function AddCustomGradient(parent)
+-- Siyahın Daha Baskın Olduğu (Yukarı Çekildiği) Yeni Geçiş
+local function AddDeepGradient(parent)
     local grad = Instance.new("UIGradient", parent)
     grad.Color = ColorSequence.new({
-        ColorSequenceKeypoint.new(0, Color3.fromRGB(200, 0, 0)),   -- En üst: Açık/Canlı Kırmızı
-        ColorSequenceKeypoint.new(0.35, Color3.fromRGB(80, 0, 0)), -- Siyahın başladığı yer (Daha yukarı çekildi)
-        ColorSequenceKeypoint.new(1, Color3.fromRGB(0, 0, 0))      -- Alt taraf: Tamamen Koyu Siyah
+        ColorSequenceKeypoint.new(0, Color3.fromRGB(150, 0, 0)),   -- Üst: Koyu/Asil Kırmızı
+        ColorSequenceKeypoint.new(0.2, Color3.fromRGB(40, 0, 0)),  -- Siyah çok hızlı başlıyor (Siyahı yukarı çektik)
+        ColorSequenceKeypoint.new(1, Color3.fromRGB(0, 0, 0))      -- Alt: Tamamen Derin Siyah
     })
     grad.Rotation = 90
 end
 
 -- ==========================================
--- 1. BÖLÜM: KEY SİSTEMİ (Onayladığın Hali)
+-- 1. BÖLÜM: KEY SİSTEMİ (Onayladığın Stabil Hal)
 -- ==========================================
 local _0xMF = Instance.new("Frame", _0xSG)
 _0xMF.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
@@ -75,7 +75,7 @@ _0xGK.Parent = _0xMF
 Instance.new("UICorner", _0xGK)
 
 -- ==========================================
--- 2. BÖLÜM: LOADER (İstediğin Yeni Renk Geçişi)
+-- 2. BÖLÜM: LOADER (İstediğin Derin Tasarım)
 -- ==========================================
 local LoaderFrame = Instance.new("Frame", _0xSG)
 LoaderFrame.Size = UDim2.new(0, 380, 0, 260)
@@ -86,11 +86,11 @@ LoaderFrame.Active = true
 LoaderFrame.Draggable = true
 LoaderFrame.ClipsDescendants = true
 Instance.new("UICorner", LoaderFrame).CornerRadius = UDim.new(0, 12)
-AddCustomGradient(LoaderFrame) -- Siyahı yukarı çeken geçiş buraya eklendi!
+AddDeepGradient(LoaderFrame) -- Siyahın yukarı çıktığı o yeni geçiş!
 
 local LoaderStroke = Instance.new("UIStroke", LoaderFrame)
-LoaderStroke.Color = Color3.fromRGB(0, 0, 0)
-LoaderStroke.Thickness = 2
+LoaderStroke.Color = Color3.fromRGB(0, 0, 0) -- Çerçeve tam siyah
+LoaderStroke.Thickness = 2.5
 
 local LoaderTitle = Instance.new("TextLabel", LoaderFrame)
 LoaderTitle.Text = "SYNIOX LOADER || V2"
@@ -106,15 +106,15 @@ local function CreateSynioxBtn(name, pos, scriptURL)
     btn.Text = name
     btn.Size = UDim2.new(0.85, 0, 0, 42)
     btn.Position = pos
-    btn.BackgroundColor3 = Color3.fromRGB(15, 15, 15) 
+    btn.BackgroundColor3 = Color3.fromRGB(12, 12, 12) -- Butonları biraz daha kararttık
     btn.TextColor3 = Color3.fromRGB(255, 255, 255)
     btn.Font = Enum.Font.GothamBold
     btn.TextSize = 17
     Instance.new("UICorner", btn)
     
     local btnStroke = Instance.new("UIStroke", btn)
-    btnStroke.Color = Color3.fromRGB(160, 0, 0)
-    btnStroke.Thickness = 1.5
+    btnStroke.Color = Color3.fromRGB(130, 0, 0) -- Daha koyu kırmızı çerçeve
+    btnStroke.Thickness = 2
 
     btn.MouseButton1Click:Connect(function()
         btn.Text = "EXECUTING..."
@@ -132,10 +132,10 @@ end
 
 CreateSynioxBtn("Syniox Farming", UDim2.new(0.075, 0, 0.24, 0), "https://raw.githubusercontent.com/SynioxStudios/SynioxPublic-SH-SynioxHub-ByYusuf-BestSC/refs/heads/main/Key.txt")
 CreateSynioxBtn("Syniox Main Hub", UDim2.new(0.075, 0, 0.48, 0), "https://raw.githubusercontent.com/SynioxStudios/SynioxTryingGui-ByHenne/refs/heads/main/trySyniox")
-CreateSynioxBtn("Syniox PvP Mode", UDim2.new(0.075, 0, 0.72, 0), "https://raw.githubusercontent.com/Link_Buraya_3")
+CreateSynioxBtn("Syniox Anti-Afk", UDim2.new(0.075, 0, 0.72, 0), "https://raw.githubusercontent.com/Link_Buraya_3")
 
 -- ==========================================
--- 3. BÖLÜM: GEÇİŞLER (Videonun Akışı)
+-- 3. BÖLÜM: GEÇİŞLER
 -- ==========================================
 _0xSB.MouseButton1Click:Connect(function()
     if _0xKI.Text == _0xK then
