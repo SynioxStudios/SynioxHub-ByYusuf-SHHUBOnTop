@@ -1,4 +1,4 @@
--- [[ SYNIOX MEGA PROJECT - V2 (SHRINK ANIMATION) ]] --
+-- [[ SYNIOX MEGA PROJECT - V2 (FIXED TEXT SIZE & SHRINK) ]] --
 local _0xK = "Syniox-X-Yusuf" 
 local TweenService = game:GetService("TweenService")
 
@@ -11,121 +11,123 @@ _0xSG.Name = "SynioxProjectV2"
 -- ==========================================
 local _0xMF = Instance.new("Frame", _0xSG)
 _0xMF.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-_0xMF.Position = UDim2.new(0.5, -200, 0.5, -100)
-_0xMF.Size = UDim2.new(0, 400, 0, 200)
+_0xMF.Position = UDim2.new(0.5, -200, 0.5, -110)
+_0xMF.Size = UDim2.new(0, 420, 0, 240) -- Çerçeveyi biraz büyüttüm
 _0xMF.Active = true
 _0xMF.Draggable = true
-Instance.new("UICorner", _0xMF).CornerRadius = UDim.new(0, 10)
+Instance.new("UICorner", _0xMF).CornerRadius = UDim.new(0, 12)
 
 local _0xST = Instance.new("UIStroke", _0xMF)
 _0xST.Color = Color3.fromRGB(150, 0, 0) 
-_0xST.Thickness = 2
+_0xST.Thickness = 2.5
 
 local _0xTL = Instance.new("TextLabel", _0xMF)
 _0xTL.Text = "SYNIOX PUBLIC"
-_0xTL.Size = UDim2.new(1, 0, 0, 45)
+_0xTL.Size = UDim2.new(1, 0, 0, 60)
 _0xTL.TextColor3 = Color3.fromRGB(150, 0, 0)
 _0xTL.BackgroundTransparency = 1
 _0xTL.Font = Enum.Font.GothamBold
-_0xTL.TextSize = 22
+_0xTL.TextSize = 26 -- Başlık boyutu artırıldı
 _0xTL.Parent = _0xMF
 
--- ... (TextBox ve Diğer Butonlar Aynı Kalıyor) ...
 local _0xKI = Instance.new("TextBox", _0xMF)
 _0xKI.PlaceholderText = "ENTER KEY..."
-_0xKI.Position = UDim2.new(0.1, 0, 0.3, 0)
-_0xKI.Size = UDim2.new(0.8, 0, 0, 40)
-_0xKI.BackgroundColor3 = Color3.fromRGB(15, 15, 15)
+_0xKI.Position = UDim2.new(0.05, 0, 0.28, 0)
+_0xKI.Size = UDim2.new(0.9, 0, 0, 45) -- Kutu yüksekliği artırıldı
+_0xKI.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
 _0xKI.TextColor3 = Color3.fromRGB(255, 255, 255)
 _0xKI.Font = Enum.Font.GothamMedium
+_0xKI.TextSize = 18 -- İçindeki yazı büyütüldü
 _0xKI.Parent = _0xMF
 Instance.new("UICorner", _0xKI)
 
 local _0xSB = Instance.new("TextButton", _0xMF)
 _0xSB.Text = "SUBMIT KEY"
-_0xSB.Position = UDim2.new(0.1, 0, 0.53, 0)
-_0xSB.Size = UDim2.new(0.8, 0, 0, 40)
+_0xSB.Position = UDim2.new(0.05, 0, 0.52, 0)
+_0xSB.Size = UDim2.new(0.9, 0, 0, 45)
 _0xSB.BackgroundColor3 = Color3.fromRGB(150, 0, 0)
 _0xSB.TextColor3 = Color3.fromRGB(255, 255, 255)
 _0xSB.Font = Enum.Font.GothamBold
+_0xSB.TextSize = 20 -- Yazı boyutu artırıldı
 _0xSB.Parent = _0xMF
 Instance.new("UICorner", _0xSB)
 
 local _0xGK = Instance.new("TextButton", _0xMF)
 _0xGK.Text = "GET KEY"
-_0xGK.Position = UDim2.new(0.1, 0, 0.76, 0)
-_0xGK.Size = UDim2.new(0.8, 0, 0, 35)
+_0xGK.Position = UDim2.new(0.05, 0, 0.76, 0)
+_0xGK.Size = UDim2.new(0.9, 0, 0, 45)
 _0xGK.BackgroundColor3 = Color3.fromRGB(150, 0, 0)
 _0xGK.TextColor3 = Color3.fromRGB(255, 255, 255)
 _0xGK.Font = Enum.Font.GothamBold
+_0xGK.TextSize = 20 -- Yazı boyutu artırıldı
 _0xGK.Parent = _0xMF
 Instance.new("UICorner", _0xGK)
 
 -- ==========================================
--- 2. BÖLÜM: SYNIOX LOADER (ANİMASYONLU)
+-- 2. BÖLÜM: SYNIOX LOADER (KÜÇÜLEN & İRİ YAZILI)
 -- ==========================================
 local LoaderFrame = Instance.new("Frame", _0xSG)
-LoaderFrame.Size = UDim2.new(0, 350, 0, 260)
-LoaderFrame.Position = UDim2.new(0.5, -175, -0.6, 0) 
+LoaderFrame.Size = UDim2.new(0, 400, 0, 280) -- Boyut artırıldı
+LoaderFrame.Position = UDim2.new(0.5, -200, -0.6, 0) 
 LoaderFrame.BackgroundColor3 = Color3.fromRGB(0, 0, 0) 
 LoaderFrame.Visible = false
 LoaderFrame.Active = true
 LoaderFrame.Draggable = true
-LoaderFrame.ClipsDescendants = true -- Küçülürken içindekiler taşmasın
-Instance.new("UICorner", LoaderFrame).CornerRadius = UDim.new(0, 12)
+LoaderFrame.ClipsDescendants = true
+Instance.new("UICorner", LoaderFrame).CornerRadius = UDim.new(0, 15)
 
 local LoaderStroke = Instance.new("UIStroke", LoaderFrame)
 LoaderStroke.Color = Color3.fromRGB(150, 0, 0)
-LoaderStroke.Thickness = 2
+LoaderStroke.Thickness = 2.5
 
 local LoaderTitle = Instance.new("TextLabel", LoaderFrame)
 LoaderTitle.Text = "SYNIOX LOADER || V2"
-LoaderTitle.Size = UDim2.new(1, 0, 0, 50)
+LoaderTitle.Size = UDim2.new(1, 0, 0, 60)
 LoaderTitle.TextColor3 = Color3.fromRGB(150, 0, 0)
 LoaderTitle.BackgroundTransparency = 1
 LoaderTitle.Font = Enum.Font.GothamBold
-LoaderTitle.TextSize = 20
+LoaderTitle.TextSize = 24 -- Başlık büyütüldü
 LoaderTitle.Parent = LoaderFrame
 
 local function CreateSynioxBtn(name, pos, scriptURL)
     local btn = Instance.new("TextButton", LoaderFrame)
     btn.Text = name
-    btn.Size = UDim2.new(0.8, 0, 0, 45)
+    btn.Size = UDim2.new(0.9, 0, 0, 55) -- Butonlar daha dolgun
     btn.Position = pos
     btn.BackgroundColor3 = Color3.fromRGB(150, 0, 0)
     btn.TextColor3 = Color3.fromRGB(255, 255, 255)
     btn.Font = Enum.Font.GothamBold
-    btn.TextSize = 14
+    btn.TextSize = 18 -- Buton yazıları büyütüldü
     Instance.new("UICorner", btn)
     
     btn.MouseButton1Click:Connect(function()
         btn.Text = "EXECUTING..."
         
-        -- KÜÇÜLME ANİMASYONU (Shrink)
-        local shrinkTween = TweenService:Create(LoaderFrame, TweenInfo.new(0.5, Enum.EasingStyle.Back, Enum.EasingDirection.In), {
+        -- KÜÇÜLEREK KAPANMA (Shrink)
+        local shrink = TweenService:Create(LoaderFrame, TweenInfo.new(0.5, Enum.EasingStyle.Back, Enum.EasingDirection.In), {
             Size = UDim2.new(0, 0, 0, 0),
-            Position = UDim2.new(0.5, 0, 0.5, 0) -- Merkeze doğru küçülür
+            Position = UDim2.new(0.5, 0, 0.5, 0)
         })
-        shrinkTween:Play()
+        shrink:Play()
         
-        shrinkTween.Completed:Connect(function()
+        shrink.Completed:Connect(function()
             _0xSG:Destroy()
             pcall(function() loadstring(game:HttpGet(scriptURL))() end)
         end)
     end)
 end
 
--- Linklerin
-CreateSynioxBtn("Syniox Farming", UDim2.new(0.1, 0, 0.23, 0), "https://raw.githubusercontent.com/SynioxStudios/SynioxPublic-SH-SynioxHub-ByYusuf-BestSC/refs/heads/main/Key.txt")
-CreateSynioxBtn("Syniox Main Hub", UDim2.new(0.1, 0, 0.46, 0), "https://raw.githubusercontent.com/Link_Buraya_2")
-CreateSynioxBtn("Syniox PvP Mode", UDim2.new(0.1, 0, 0.69, 0), "https://raw.githubusercontent.com/Link_Buraya_3")
+-- Linklerin ve Buton Pozisyonları (Daha aralıklı)
+CreateSynioxBtn("Syniox Farming", UDim2.new(0.05, 0, 0.22, 0), "https://raw.githubusercontent.com/SynioxStudios/SynioxPublic-SH-SynioxHub-ByYusuf-BestSC/refs/heads/main/Key.txt")
+CreateSynioxBtn("Syniox Main Hub", UDim2.new(0.05, 0, 0.47, 0), "https://raw.githubusercontent.com/Link_Buraya_2")
+CreateSynioxBtn("Syniox PvP Mode", UDim2.new(0.05, 0, 0.72, 0), "https://raw.githubusercontent.com/Link_Buraya_3")
 
 -- ==========================================
 -- 3. BÖLÜM: GEÇİŞLER
 -- ==========================================
 _0xSB.MouseButton1Click:Connect(function()
     if _0xKI.Text == _0xK then
-        _0xSB.Text = "ACCESS GRANTED!"
+        _0xSB.Text = "SUCCESS!"
         _0xSB.BackgroundColor3 = Color3.fromRGB(0, 150, 0)
         task.wait(0.5)
         
@@ -135,7 +137,7 @@ _0xSB.MouseButton1Click:Connect(function()
         panelExit.Completed:Connect(function()
             _0xMF.Visible = false
             LoaderFrame.Visible = true
-            local loaderEntry = TweenService:Create(LoaderFrame, TweenInfo.new(0.8, Enum.EasingStyle.Back, Enum.EasingDirection.Out), {Position = UDim2.new(0.5, -175, 0.5, -130)})
+            local loaderEntry = TweenService:Create(LoaderFrame, TweenInfo.new(0.8, Enum.EasingStyle.Back, Enum.EasingDirection.Out), {Position = UDim2.new(0.5, -200, 0.5, -140)})
             loaderEntry:Play()
         end)
     else
