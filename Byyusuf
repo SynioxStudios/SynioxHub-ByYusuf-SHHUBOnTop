@@ -1,4 +1,4 @@
--- [[ SYNIOX MEGA PROJECT - V2 (ULTRA GRADIENT) ]] --
+-- [[ SYNIOX MEGA PROJECT - V2 (ULTRA GRADIENT FIX) ]] --
 local _0xK = "Syniox-X-Yusuf" 
 local TweenService = game:GetService("TweenService")
 
@@ -6,19 +6,19 @@ local _0xCG = game:GetService("CoreGui")
 local _0xSG = Instance.new("ScreenGui", _0xCG)
 _0xSG.Name = "SynioxProjectV2"
 
--- Güzelleştirilmiş Belirgin Renk Geçişi (Gradient)
-local function AddEnhancedGradient(parent)
+-- Siyahı Daha Yukarı Taşıyan Kırmızı -> Siyah Geçişi
+local function AddCustomGradient(parent)
     local grad = Instance.new("UIGradient", parent)
     grad.Color = ColorSequence.new({
-        ColorSequenceKeypoint.new(0, Color3.fromRGB(200, 0, 0)), -- Daha parlak kırmızı üstte
-        ColorSequenceKeypoint.new(0.5, Color3.fromRGB(80, 0, 0)), -- Orta kısımda geçiş başlıyor
-        ColorSequenceKeypoint.new(1, Color3.fromRGB(0, 0, 0))    -- Tam siyah altta
+        ColorSequenceKeypoint.new(0, Color3.fromRGB(200, 0, 0)),   -- En üst: Açık/Canlı Kırmızı
+        ColorSequenceKeypoint.new(0.35, Color3.fromRGB(80, 0, 0)), -- Siyahın başladığı yer (Daha yukarı çekildi)
+        ColorSequenceKeypoint.new(1, Color3.fromRGB(0, 0, 0))      -- Alt taraf: Tamamen Koyu Siyah
     })
-    grad.Rotation = 90 -- Yukarıdan aşağıya akış
+    grad.Rotation = 90
 end
 
 -- ==========================================
--- 1. BÖLÜM: KEY SİSTEMİ (Onayladığın Boyutlar)
+-- 1. BÖLÜM: KEY SİSTEMİ (Onayladığın Hali)
 -- ==========================================
 local _0xMF = Instance.new("Frame", _0xSG)
 _0xMF.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
@@ -75,7 +75,7 @@ _0xGK.Parent = _0xMF
 Instance.new("UICorner", _0xGK)
 
 -- ==========================================
--- 2. BÖLÜM: LOADER (DAHA GÜZEL GRADIENT)
+-- 2. BÖLÜM: LOADER (İstediğin Yeni Renk Geçişi)
 -- ==========================================
 local LoaderFrame = Instance.new("Frame", _0xSG)
 LoaderFrame.Size = UDim2.new(0, 380, 0, 260)
@@ -86,11 +86,11 @@ LoaderFrame.Active = true
 LoaderFrame.Draggable = true
 LoaderFrame.ClipsDescendants = true
 Instance.new("UICorner", LoaderFrame).CornerRadius = UDim.new(0, 12)
-AddEnhancedGradient(LoaderFrame) -- Yeni, belirgin geçiş buraya eklendi!
+AddCustomGradient(LoaderFrame) -- Siyahı yukarı çeken geçiş buraya eklendi!
 
 local LoaderStroke = Instance.new("UIStroke", LoaderFrame)
-LoaderStroke.Color = Color3.fromRGB(100, 0, 0) -- Geçişi bozmasın diye daha koyu kırmızı stroke
-LoaderStroke.Thickness = 3
+LoaderStroke.Color = Color3.fromRGB(0, 0, 0)
+LoaderStroke.Thickness = 2
 
 local LoaderTitle = Instance.new("TextLabel", LoaderFrame)
 LoaderTitle.Text = "SYNIOX LOADER || V2"
@@ -114,7 +114,7 @@ local function CreateSynioxBtn(name, pos, scriptURL)
     
     local btnStroke = Instance.new("UIStroke", btn)
     btnStroke.Color = Color3.fromRGB(160, 0, 0)
-    btnStroke.Thickness = 2
+    btnStroke.Thickness = 1.5
 
     btn.MouseButton1Click:Connect(function()
         btn.Text = "EXECUTING..."
@@ -132,10 +132,10 @@ end
 
 CreateSynioxBtn("Syniox Farming", UDim2.new(0.075, 0, 0.24, 0), "https://raw.githubusercontent.com/SynioxStudios/SynioxPublic-SH-SynioxHub-ByYusuf-BestSC/refs/heads/main/Key.txt")
 CreateSynioxBtn("Syniox Main Hub", UDim2.new(0.075, 0, 0.48, 0), "https://raw.githubusercontent.com/SynioxStudios/SynioxTryingGui-ByHenne/refs/heads/main/trySyniox")
-CreateSynioxBtn("Syniox Anti Afk", UDim2.new(0.075, 0, 0.72, 0), "https://raw.githubusercontent.com/Link_Buraya_3")
+CreateSynioxBtn("Syniox PvP Mode", UDim2.new(0.075, 0, 0.72, 0), "https://raw.githubusercontent.com/Link_Buraya_3")
 
 -- ==========================================
--- 3. BÖLÜM: GEÇİŞLER (Videodaki Akış)
+-- 3. BÖLÜM: GEÇİŞLER (Videonun Akışı)
 -- ==========================================
 _0xSB.MouseButton1Click:Connect(function()
     if _0xKI.Text == _0xK then
