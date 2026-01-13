@@ -132,7 +132,7 @@ end
 
 CreateSynioxBtn("Syniox Farming", UDim2.new(0.075, 0, 0.24, 0), "https://raw.githubusercontent.com/SynioxStudios/SynioxPublic-SH-SynioxHub-ByYusuf-BestSC/refs/heads/main/Key.txt")
 CreateSynioxBtn("Syniox Main Hub", UDim2.new(0.075, 0, 0.48, 0), "https://raw.githubusercontent.com/SynioxStudios/SynioxTryingGui-ByHenne/refs/heads/main/trySyniox")
-CreateSynioxBtn("Syniox Anti-Afk", UDim2.new(0.075, 0, 0.72, 0), "https://raw.githubusercontent.com/Link_Buraya_3")
+CreateSynioxBtn("Syniox Anti-Afk", UDim2.new(0.075, 0, 0.72, 0), "https://raw.githubusercontent.com/SynioxStudios/Anti-Afk-ByYusuf/refs/heads/main/Anti-Afk.lua")
 
 -- ==========================================
 -- 3. BÖLÜM: GEÇİŞLER
