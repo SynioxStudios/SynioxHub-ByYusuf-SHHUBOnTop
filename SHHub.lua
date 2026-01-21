@@ -111,7 +111,7 @@ local function CreateSynioxBtn(name, pos, scriptURL)
     end)
 end
 
-CreateSynioxBtn("Syniox Main Hub", UDim2.new(0.075, 0, 0.48, 0), "https://raw.githubusercontent.com/SynioxStudios/SynioxTryingGui-ByHenne/refs/heads/main/trySyniox")
+CreateSynioxBtn("Syniox Main Hub", UDim2.new(0.075, 0, 0.48, 0), "https://raw.githubusercontent.com/SynioxStudios/SynioxHub-SHHub-BestDevYusuf-SHPublic/refs/heads/main/SHHUB.lua")
 CreateSynioxBtn("Syniox Anti-Afk", UDim2.new(0.075, 0, 0.72, 0), "https://raw.githubusercontent.com/SynioxStudios/Anti-Afk-ByYusuf/refs/heads/main/Anti-Afk.lua")
 
 _0xSB.MouseButton1Click:Connect(function()
