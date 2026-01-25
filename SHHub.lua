@@ -82,11 +82,24 @@ LoaderTitle.Font = Enum.Font.GothamBold
 LoaderTitle.TextSize = 20
 LoaderTitle.Parent = LoaderFrame
 
-local function CreateSynioxBtn(name, pos, scriptURL)
-    local btn = Instance.new("TextButton", LoaderFrame)
+local ScrollContainer = Instance.new("ScrollingFrame", LoaderFrame)
+ScrollContainer.Size = UDim2.new(1, -20, 1, -70)
+ScrollContainer.Position = UDim2.new(0, 10, 0, 60)
+ScrollContainer.BackgroundTransparency = 1
+ScrollContainer.CanvasSize = UDim2.new(0, 0, 0, 400)
+ScrollContainer.ScrollBarThickness = 3
+ScrollContainer.ScrollBarImageColor3 = Color3.fromRGB(160, 0, 0)
+ScrollContainer.BorderSizePixel = 0
+
+local ScrollLayout = Instance.new("UIListLayout", ScrollContainer)
+ScrollLayout.HorizontalAlignment = Enum.HorizontalAlignment.Center
+ScrollLayout.Padding = UDim.new(0, 10)
+ScrollLayout.SortOrder = Enum.SortOrder.LayoutOrder
+
+local function CreateSynioxBtn(name, scriptURL)
+    local btn = Instance.new("TextButton", ScrollContainer)
     btn.Text = name
-    btn.Size = UDim2.new(0.85, 0, 0, 42)
-    btn.Position = pos
+    btn.Size = UDim2.new(0.9, 0, 0, 42)
     btn.BackgroundColor3 = Color3.fromRGB(12, 12, 12) 
     btn.TextColor3 = Color3.fromRGB(255, 255, 255)
     btn.Font = Enum.Font.GothamBold
@@ -111,8 +124,10 @@ local function CreateSynioxBtn(name, pos, scriptURL)
     end)
 end
 
-CreateSynioxBtn("Syniox Main Hub", UDim2.new(0.075, 0, 0.24, 0), "https://raw.githubusercontent.com/SynioxStudios/SynioxHub-SHHub-BestDevYusuf-SHPublic/refs/heads/main/SHHUB.lua")
-CreateSynioxBtn("Syniox Anti-Afk", UDim2.new(0.075, 0, 0.48, 0), "https://raw.githubusercontent.com/SynioxStudios/Anti-Afk-ByYusuf/refs/heads/main/Anti-Afk.lua")
+CreateSynioxBtn("Syniox Main Hub", "https://raw.githubusercontent.com/SynioxStudios/SynioxHub-SHHub-BestDevYusuf-SHPublic/refs/heads/main/SHHUB.lua")
+CreateSynioxBtn("Syniox Anti-Afk", "https://raw.githubusercontent.com/SynioxStudios/Anti-Afk-ByYusuf/refs/heads/main/Anti-Afk.lua")
+CreateSynioxBtn("Syniox Admin Script", "BURAYA_LINK")
+CreateSynioxBtn("Coming Soon", "BURAYA_LINK")
 
 _0xSB.MouseButton1Click:Connect(function()
     if _0xKI.Text == _0xK then
