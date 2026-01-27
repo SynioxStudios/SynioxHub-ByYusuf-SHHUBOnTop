@@ -126,7 +126,7 @@ end
 
 CreateSynioxBtn("Syniox Main Hub", "https://raw.githubusercontent.com/SynioxStudios/SynioxHub-SHHub-BestDevYusuf-SHPublic/refs/heads/main/SHHUB.lua")
 CreateSynioxBtn("Syniox Anti-Afk", "https://raw.githubusercontent.com/SynioxStudios/Anti-Afk-ByYusuf/refs/heads/main/Anti-Afk.lua")
-CreateSynioxBtn("Syniox Admin Script", "BURAYA_LINK")
+CreateSynioxBtn("Coming Soon", "BURAYA_LINK")
 CreateSynioxBtn("Coming Soon", "BURAYA_LINK")
 
 _0xSB.MouseButton1Click:Connect(function()
@@ -154,6 +154,6 @@ end)
 _0xGK.MouseButton1Click:Connect(function()
     setclipboard("https://discord.gg/DbAU5Z6HPd")
     _0xGK.Text = "COPIED DISCORD!"
-    task.wait(1.5)
+    task.wait(1.2)
     _0xGK.Text = "GET KEY"
 end)
